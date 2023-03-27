@@ -24,14 +24,14 @@ app.get('/dapr/subscribe', (_req, res) => {
 });
 
 app.post('/A', (req, res) => {
-    console.log("Texto Comprimido A", req.body.data)
+    console.log("Resultado A", req.body.data)
     const decompressed = lzbase62.decompress(req.body.data);
     console.log("Decompressed A: ", decompressed)
     res.sendStatus(200);
 });
 
 app.post('/B', (req, res) => {
-    console.log("Texto Comprimido B", req.body.data)
+    console.log("Resultado B", req.body.data)
     const decompressed = lzbase62.decompress(req.body.data);
     console.log("Decompressed B: ", decompressed)
     res.sendStatus(200);
