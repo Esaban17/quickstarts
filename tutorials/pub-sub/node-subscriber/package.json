@@ -10,6 +10,7 @@
   "author": "Ryan Volum",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lzbase62": "^2.0.0"
   }
 }

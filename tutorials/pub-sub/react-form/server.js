@@ -7,6 +7,7 @@ const express = require('express');
 const axios = require('axios');
 const path = require('path');
 const bodyParser = require('body-parser');
+const lzbase62 = require('lzbase62');
 
 const app = express();
 
@@ -19,8 +20,11 @@ const pubsubName = 'pubsub';
 
 // Publish to topic (messageType) using Dapr pub-sub
 app.post('/publish', async (req, res) => {
-  console.log("Publishing: ", req.body);
-  await axios.post(`${daprUrl}/publish/${pubsubName}/${req.body?.messageType}`, req.body);
+
+  console.log("Text a comprimir: ", req.body);
+  const compressed = lzbase62.compress(req.body.message);
+
+  await axios.post(`${daprUrl}/publish/${pubsubName}/${req.body?.messageType}`, compressed);
   return res.sendStatus(200);
 });
 
